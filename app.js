@@ -4,14 +4,13 @@ let concesionaria = {
    autos: autos,
 
    buscarAuto: function(patente){
-        let marca = null;
-        for(let i = 0 ; i<this.autos.length ; i++){
-            let auto = this.autos[i];
+        let encontrado = null;
+        this.autos.filter(function(auto){
             if(auto.patente === patente){
-                marca = auto;
+                encontrado = auto;
             }
-        }
-        return (marca);
+        })
+        return (encontrado);
     },
     venderAuto: function(patente){
         let auto = this.buscarAuto(patente);
@@ -31,12 +30,12 @@ let concesionaria = {
     },
     listaDeVentas : function(){
         let precio = []
-        autos = this.autos;
-        for (let i = 0 ; i<autos.length ; i++){
-            if (autos[i].vendido === true){
-                precio.push(autos[i].precio)
+        this.autos.filter(function(auto){
+            if(auto.vendido === true){
+                precio.push(auto.precio)
             }
-        }
+        })
+
         return precio;
     },
     totalDeVentas : function (){
