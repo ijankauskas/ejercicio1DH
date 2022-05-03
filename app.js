@@ -6,9 +6,7 @@ let concesionaria = {
    buscarAuto: function(patente){
         let encontrado = null;
         this.autos.filter(function(auto){
-            if(auto.patente === patente){
-                encontrado = auto;
-            }
+            auto.patente === patente ?  encontrado = auto : "";
         })
         return (encontrado);
     },
@@ -31,9 +29,7 @@ let concesionaria = {
     listaDeVentas : function(){
         let precio = []
         this.autos.filter(function(auto){
-            if(auto.vendido === true){
-                precio.push(auto.precio)
-            }
+            auto.vendido === true ? precio.push(auto.precio) : "" ;            
         })
 
         return precio;
@@ -55,10 +51,8 @@ let concesionaria = {
         let autoEnVenta = this.autosParaLaVenta();
         let autos = [];
         for (let i = 0 ; i<autoEnVenta.length ; i++){
-           let autosAprobados = this.puedeComprar(autoEnVenta[i], persona);
-            if(autosAprobados === true){
-                autos.push(autoEnVenta[i])
-            }
+        let autosAprobados = this.puedeComprar(autoEnVenta[i], persona);
+        autosAprobados === true ? autos.push(autoEnVenta[i]) : ""
         }
         return autos;
     }
